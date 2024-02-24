@@ -11,8 +11,8 @@ class TestHandler(tornado.web.RequestHandler):
             self.write(
                 {
                     "error_code": "1",
-                    "error_message": "Parameter 'b' is required",
-                    "reference": None,
+                    "error_message": "Parameter 'b' is missing",
+                    "reference": "None",
                 }
             )
         else:
