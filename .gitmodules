@@ -1,0 +1,3 @@
+[submodule "httprunner"]
+	path = httprunner
+	url = https://github.com/jackwang0108/httprunner.git
