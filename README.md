@@ -45,6 +45,24 @@
 
 项目结构为：
 
+```bash
+❯ \tree -L 1 ./
+./
+├── README.md
+├── app
+├── httprunnerTest
+└── locustTest
+
+4 directories, 1 file
+```
+
+其中：
+
+- `README.md`中包含了项目报告
+- `app`文件夹中包含了结构实现，提供了`Flask`、`Tornado`和`Django`三种实现
+- `httprunnerTest`文件夹中包含了接口的测试配置
+- `locustTest`文件夹中包含了接口性能测试配置
+
 
 
 ### 0）准备
