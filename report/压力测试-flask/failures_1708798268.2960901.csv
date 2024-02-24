@@ -1,0 +1,5 @@
+Method,Name,Error,Occurrences
+GET,/test,"ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x....>, 'Connection to 127.0.0.1 timed out. (connect timeout=None)')",39
+GET,/test,"OSError(48, 'Address already in use')",2
+GET,/test,"OSError(49, ""Can't assign requested address"")",12180
+GET,/test,"ConnectionResetError(54, 'Connection reset by peer')",17

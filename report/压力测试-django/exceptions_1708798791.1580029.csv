@@ -1,0 +1,11 @@
+Count,Message,Traceback,Nodes
+58385,,"  File ""/Users/jack/miniconda3/lib/python3.11/site-packages/locust/user/task.py"", line 342, in run
+    self.execute_next_task()
+  File ""/Users/jack/miniconda3/lib/python3.11/site-packages/locust/user/task.py"", line 375, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/jack/miniconda3/lib/python3.11/site-packages/locust/user/task.py"", line 492, in execute_task
+    task(self.user)
+  File ""/Users/jack/project/tencent-test/locustTest/main.py"", line 11, in test_api
+    assert res.status_code == 200
+           ^^^^^^^^^^^^^^^^^^^^^^
+",local
