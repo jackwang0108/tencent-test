@@ -13,7 +13,7 @@ def test():
             {
                 "error_code": "1",
                 "error_message": "Parameter 'b' is missing",
-                "reference": None,
+                "reference": "None",
             }
         )
 
