@@ -88,6 +88,8 @@ python -m pip install -r requirements.txt
 
 因此本项目中采用我 `fork`后修复 `bug`的版本（以 `submodule`形式添加）
 
+注意：如果你需要进行编译的话，请确保你的机器上已经安装Go环境，HttpRunner自4.x版本后支持Python与Go双引擎，因此在编译时需要Go语言环境支持
+
 ```bash
 # 初始化修复bug的httprunner
 git submodule update --init
