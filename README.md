@@ -1,12 +1,10 @@
+![1708799725825](image/README/1708799725825.png)
+
 # Tencent-Test
 
 本项目是腾讯云西安子公司，性能工程团队面试初筛项目。项目实现与报告已经上传至Github：https://github.com/jackwang0108/tencent-test.git
 
-
-
-项目最终的接口实现代码、接口测试报告、压力测试报告存放在`report`文件夹中。
-
-
+项目最终的接口实现代码、接口测试报告、压力测试报告存放在 `report`文件夹中。
 
 ## 1. 说明
 
@@ -41,10 +39,6 @@
 
 使用 `Locust`对构造的接口服务进行性能测试
 
-
-
-
-
 ## 2. 介绍
 
 项目结构为：
@@ -67,8 +61,6 @@
 - `httprunnerTest`文件夹中包含了接口的测试配置
 - `locustTest`文件夹中包含了接口性能测试配置
 
-
-
 ## 3. 安装
 
 ### 1) 下载仓库
@@ -79,8 +71,6 @@
 git clone https://github.com/jackwang0108/tencent-test.git
 ```
 
-
-
 ### 2）安装Python依赖
 
 使用如下命令安装 `Python`依赖：
@@ -89,16 +79,14 @@ git clone https://github.com/jackwang0108/tencent-test.git
 python -m pip install -r requirements.txt
 ```
 
-
-
 ### 3) 编译安装HttpRunner
 
-官方版本的`HttpRunner`存在`Bug`，具体为：
+官方版本的 `HttpRunner`存在 `Bug`，具体为：
 
-- `validate 失败后report无法正常生成`，详见`Issue 1712`：https://github.com/httprunner/httprunner/issues/1712
-- `When the assertion fails, an error message is generated, and a test report is not generated`，详见`Issue 1724`：https://github.com/httprunner/httprunner/issues/1724
+- `validate 失败后report无法正常生成`，详见 `Issue 1712`：https://github.com/httprunner/httprunner/issues/1712
+- `When the assertion fails, an error message is generated, and a test report is not generated`，详见 `Issue 1724`：https://github.com/httprunner/httprunner/issues/1724
 
-因此本项目中采用我`fork`后修复`bug`的版本（以`submodule`形式添加）
+因此本项目中采用我 `fork`后修复 `bug`的版本（以 `submodule`形式添加）
 
 ```bash
 # 初始化修复bug的httprunner
@@ -109,17 +97,13 @@ cd httprunner
 make build
 ```
 
-编译成功后构建得到的`hrp`保存在`./httprunner/output`文件夹中
+编译成功后构建得到的 `hrp`保存在 `./httprunner/output`文件夹中
 
-将其安装至`PATH`环境变量的搜索路径中（或者添加路径到`PATH`环境变量中）
+将其安装至 `PATH`环境变量的搜索路径中（或者添加路径到 `PATH`环境变量中）
 
 ```bash
 cp output/hrp /usr/local/bin/hrp
 ```
-
-
-
-
 
 ## 4. 使用接口服务
 
@@ -170,15 +154,13 @@ python app/django_app/manage.py runserver 5000
 
 ![Django实现运行效果](https://jack-1307599355.cos.ap-shanghai.myqcloud.com/image-20240224153104272.png)
 
-
-
 ## 5. 进行接口测试
 
 使用 `httprunner`框架针对构造的接口进行接口测试。`HttpRunner`的架构如下图所示：
 
 ![](https://jack-1307599355.cos.ap-shanghai.myqcloud.com/httprunner.drawio.png)
 
-注意：本次测试采用手动编写`YAML`文件以得到测试用例的方式
+注意：本次测试采用手动编写 `YAML`文件以得到测试用例的方式
 
 `httprunnerTest`文件夹中提供了接口测试的实现，对三种实现使用统一的配置文件进行自动化测试：
 
@@ -200,9 +182,7 @@ httprunnerTest
 其中：
 
 - 测试用例保存在 `testcases`文件夹下
-- 测试时所使用的环境变量保存在`.env`文件中
-
-
+- 测试时所使用的环境变量保存在 `.env`文件中
 
 ### A. 环境变量：`httprunnerTest/.env`
 
@@ -212,10 +192,6 @@ httprunnerTest
 # .env文件
 base_url=http://127.0.0.1:5000
 ```
-
-
-
-
 
 ### B. 测试用例：`httprunnerTest/testcases/requests.yml`
 
@@ -275,11 +251,9 @@ teststeps:
 
 ```
 
-
-
 ### C. 运行接口测试
 
-使用如下命令进行测试（使用`-g`参数生成报告）
+使用如下命令进行测试（使用 `-g`参数生成报告）
 
 ```
 # 运行Flask实现
@@ -310,27 +284,21 @@ hrp run testcases/requests.yml -g
 
 ![image-20240225015218893](https://jack-1307599355.cos.ap-shanghai.myqcloud.com/image-20240225015218893.png)
 
-
-
 ### D. 检查报告
 
-上述命令得到的接口测试报告将输出在`result`文件夹中。最终得到报告如下：
+上述命令得到的接口测试报告将输出在 `result`文件夹中。最终得到报告如下：
 
 ![image-20240225015413300](https://jack-1307599355.cos.ap-shanghai.myqcloud.com/image-20240225015413300.png)
 
 ![image-20240225015424773](https://jack-1307599355.cos.ap-shanghai.myqcloud.com/image-20240225015424773.png)
 
-
-
 ## 6. 进行性能测试
 
-使用 `Locust`对构造的接口服务进行性能测试。`Locust`支持分布式压力测试：即当一台发压机能力不足的情况下，可以联动多台机器一起压测，以`master` 和 `slave` 的方式进行压测
+使用 `Locust`对构造的接口服务进行性能测试。`Locust`支持分布式压力测试：即当一台发压机能力不足的情况下，可以联动多台机器一起压测，以 `master` 和 `slave` 的方式进行压测
 
 ![image-20240225015707995](https://jack-1307599355.cos.ap-shanghai.myqcloud.com/image-20240225015707995.png)
 
 由于本人只有一台机器，因此仅使用单台机器进行压力测试
-
-
 
 `Locust`测试用例存放在 `locustTest`文件夹下
 
@@ -342,8 +310,6 @@ locustTest
 
 2 directories, 1 file
 ```
-
-
 
 ### A. 测试脚本
 
@@ -363,8 +329,6 @@ class TestUser(locust.HttpUser):
         assert res.status_code == 200
 ```
 
-
-
 ### B. 进行测试
 
 使用如下命令启动 `Locust`基于 `WebUI`的测试：
@@ -382,8 +346,6 @@ locust -f locustTest/main.py
 python app/django_app/manage.py runserver 5000&
 locust -f locustTest/main.py
 ```
-
-
 
 #### 1)  `Flask`实现的压力测试：
 
@@ -431,8 +393,6 @@ Error report
 ------------------|--------------------------------------------------------------------------------------------------------------------------
 ```
 
-
-
 #### 2)  `Tornado`实现的压力测试
 
 使用同样的压力测试参数进行测试，得到结果为：
@@ -467,10 +427,6 @@ Error report
 ------------------|--------------------------------------------------------------------------------------------------------------------------
 ```
 
-
-
-
-
 #### 3) `Django`实现的压力测试
 
 使用同样的压力测试参数进行测试，得到结果为：
@@ -502,8 +458,6 @@ Error report
 ------------------|--------------------------------------------------------------------------------------------------------------------------
 ```
 
-
-
 ### C. 结论
 
 本项目对 `Flask`、`Tornado`和 `Django`实现的相同接口进行了压力测试。结果表明：
@@ -511,8 +465,6 @@ Error report
 - `Flask`作为轻量级的 `HttpServer`，在面对简单请求时性能优于 `Tornado`和 `Django`
 - `Tornado`和 `Django`在面对简单请求时两者性能类似
 - `Flask`、`Django`和 `Tornado`面对简单请求时支持的最大用户数均约为1000
-
-
 
 ## 3. 总结
 
@@ -523,7 +475,6 @@ Error report
 > 要求：
 >
 > - `a int`，选填
->
 > - `b string`，必填
 >
 > 方法：`get`
@@ -540,9 +491,4 @@ Error report
 
 并使用 `httprunner`进行了自动化测试，最后通过 `locust`进行了性能测试。
 
-
-
-最终结论表明，面对轻量级的接口，使用单台机器进行压力测试时可以较好的测试出接口的承压能力，并且在相同条件下，基于`Flask`框架实现的接口性能更加优秀
-
-
-
+最终结论表明，面对轻量级的接口，使用单台机器进行压力测试时可以较好的测试出接口的承压能力，并且在相同条件下，基于 `Flask`框架实现的接口性能更加优秀
