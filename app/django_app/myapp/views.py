@@ -13,8 +13,8 @@ def test_view(request):
         return JsonResponse(
             {
                 "error_code": "1",
-                "error_message": "Parameter 'b' is required",
-                "reference": "",
+                "error_message": "Parameter 'b' is missing",
+                "reference": "None",
             }
         )
 
