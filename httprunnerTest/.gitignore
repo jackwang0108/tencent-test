@@ -12,3 +12,4 @@ logs/
 # plugin
 debugtalk.bin
 debugtalk.so
+.debugtalk_gen.py

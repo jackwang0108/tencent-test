@@ -1,4 +1,5 @@
 .vscode
+**/.debugtalk_gen.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
