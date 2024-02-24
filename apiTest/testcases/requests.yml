@@ -1,0 +1,44 @@
+config:
+  name: "测试API接口"
+  base_url: http://127.0.0.1:5000
+  # 测试用例执行HTTP, 所以不需要验证TSL证书
+  verify: False
+
+teststeps:
+  # a=1, b=nihao, 返回预期的结果
+  - name: Test1
+    request:
+      method: GET
+      url: /test
+      params:
+        a: 1
+        b: nihao
+    validate:
+      - eq: ["status_code", 200]
+      - eq: ["body.error_code", "0"]
+      - eq: ["body.error_message", "success"]
+      - eq: ["body.reference", "111"]
+  # b=nihao, 返回预期的结果
+  - name: Test2
+    request:
+      method: GET
+      url: /test
+      params:
+        b: nihao
+    validate:
+      - eq: ["status_code", 200]
+      - eq: ["body.error_code", "0"]
+      - eq: ["body.error_message", "success"]
+      - eq: ["body.reference", "111"]
+  # a=1, 返回预期的错误结果
+  - name: Test2
+    request:
+      method: GET
+      url: /test
+      params:
+        a: 1
+    validate:
+      - eq: ["status_code", 200]
+      - eq: ["body.error_code", "1"]
+      - eq: ["body.error_message", "Parameter 'b' is missing"]
+      - eq: ["body.reference", "None"]
